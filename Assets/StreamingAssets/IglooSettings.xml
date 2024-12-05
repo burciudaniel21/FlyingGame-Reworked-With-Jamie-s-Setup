@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<IglooSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2.2">
+  <SystemSettings vSyncMode="2" targetFPS="0" sendStartupMessage="false" useDisplaySettingsOverride="true" displaySettingsOverridePath="%ProgramData%/Igloo Vision/IglooCoreEngine/settings/Unity/displaySettingsOverride" />
+  <PlayerSettings Name="player">
+    <usePlayer>false</usePlayer>
+    <rotationInput>0</rotationInput>
+    <rotationMode>0</rotationMode>
+    <movementInput>0</movementInput>
+    <movementMode>2</movementMode>
+    <runSpeed>10</runSpeed>
+    <walkSpeed>5</walkSpeed>
+    <smoothTime>10</smoothTime>
+    <optitrackControllerRigidBodyID>2</optitrackControllerRigidBodyID>
+    <crosshairHideMode>2</crosshairHideMode>
+    <isCrosshair3D>false</isCrosshair3D>
+  </PlayerSettings>
+  <NetworkSettings>
+    <inPort>9007</inPort>
+    <outPort>9001</outPort>
+    <outIP>127.0.0.1</outIP>
+  </NetworkSettings>
+  <UISettings>
+    <useUI>true</useUI>
+    <screenName>Cylinder</screenName>
+    <screenPos x="0" y="0" z="0" />
+    <screenRot x="0" y="0" z="0" />
+    <screenScale x="6" y="2.1" z="6" />
+    <followCrosshair>true</followCrosshair>
+    <followSpeed>10</followSpeed>
+    <debugUIMode>false</debugUIMode>
+  </UISettings>
+  <DisplaySettings Name="IglooUnity">
+    <textureShareMode>1</textureShareMode>
+    <useCubemapToEquirectangular>true</useCubemapToEquirectangular>
+    <equirectangularTextureResolution x="8000" y="4000" />
+    <horizontalFOV>360</horizontalFOV>
+    <verticalFOV>180</verticalFOV>
+    <useCompositeTexture>false</useCompositeTexture>
+    <useFramepackTopBottom3D>false</useFramepackTopBottom3D>
+    <useWarpBlend>false</useWarpBlend>
+    <useTruePerspective>false</useTruePerspective>
+    <HeadSettings>
+      <headPositionOffset x="0" y="2.37" z="0" />
+      <headRotationOffset x="0" y="0" z="0" />
+      <leftEyeOffset x="-0.05" y="0" z="0" />
+      <rightEyeOffset x="0.05" y="0" z="0" />
+      <headtracking>false</headtracking>
+      <headTrackingInput>0</headTrackingInput>
+      <optitrackServerIP>127.0.0.1</optitrackServerIP>
+      <optitrackHeadRigidBodyID>1</optitrackHeadRigidBodyID>
+    </HeadSettings>
+    <Displays>
+      <DisplayItem Name="IglooUnity1">
+        <isRendering>true</isRendering>
+        <fov>90</fov>
+        <is3D>false</is3D>
+        <isRenderTextures>true</isRenderTextures>
+        <cubemapFace>0</cubemapFace>
+        <renderTextureSize x="2000" y="2000" />
+        <textureShareMode>0</textureShareMode>
+        <cameraRotation x="0" y="0" z="0" />
+        <nearClipPlane>0.01</nearClipPlane>
+        <farClipPlane>1000</farClipPlane>
+        <isFisheye>false</isFisheye>
+        <fisheyeStrength x="0" y="0" />
+        <isOffAxis>false</isOffAxis>
+        <viewportRotation x="0" y="0" z="0" />
+        <viewportSize x="0" y="0" />
+        <viewportPosition x="0" y="0" z="0" />
+        <targetDisplay>-1</targetDisplay>
+      </DisplayItem>
+      <DisplayItem Name="IglooUnity2">
+        <isRendering>true</isRendering>
+        <fov>90</fov>
+        <is3D>false</is3D>
+        <isRenderTextures>true</isRenderTextures>
+        <cubemapFace>1</cubemapFace>
+        <renderTextureSize x="2000" y="2000" />
+        <textureShareMode>0</textureShareMode>
+        <cameraRotation x="0" y="90" z="0" />
+        <nearClipPlane>0.01</nearClipPlane>
+        <farClipPlane>1000</farClipPlane>
+        <isFisheye>false</isFisheye>
+        <fisheyeStrength x="0" y="0" />
+        <isOffAxis>false</isOffAxis>
+        <viewportRotation x="0" y="0" z="0" />
+        <viewportSize x="0" y="0" />
+        <viewportPosition x="0" y="0" z="0" />
+        <targetDisplay>-1</targetDisplay>
+      </DisplayItem>
+      <DisplayItem Name="IglooUnity3">
+        <isRendering>true</isRendering>
+        <fov>90</fov>
+        <is3D>false</is3D>
+        <isRenderTextures>true</isRenderTextures>
+        <cubemapFace>2</cubemapFace>
+        <renderTextureSize x="2000" y="2000" />
+        <textureShareMode>0</textureShareMode>
+        <cameraRotation x="0" y="180" z="0" />
+        <nearClipPlane>0.01</nearClipPlane>
+        <farClipPlane>1000</farClipPlane>
+        <isFisheye>false</isFisheye>
+        <fisheyeStrength x="0" y="0" />
+        <isOffAxis>false</isOffAxis>
+        <viewportRotation x="0" y="0" z="0" />
+        <viewportSize x="0" y="0" />
+        <viewportPosition x="0" y="0" z="0" />
+        <targetDisplay>-1</targetDisplay>
+      </DisplayItem>
+      <DisplayItem Name="IglooUnity4">
+        <isRendering>true</isRendering>
+        <fov>90</fov>
+        <is3D>false</is3D>
+        <isRenderTextures>true</isRenderTextures>
+        <cubemapFace>3</cubemapFace>
+        <renderTextureSize x="2000" y="2000" />
+        <textureShareMode>0</textureShareMode>
+        <cameraRotation x="0" y="270" z="0" />
+        <nearClipPlane>0.01</nearClipPlane>
+        <farClipPlane>1000</farClipPlane>
+        <isFisheye>false</isFisheye>
+        <fisheyeStrength x="0" y="0" />
+        <isOffAxis>false</isOffAxis>
+        <viewportRotation x="0" y="0" z="0" />
+        <viewportSize x="0" y="0" />
+        <viewportPosition x="0" y="0" z="0" />
+        <targetDisplay>-1</targetDisplay>
+      </DisplayItem>
+      <DisplayItem Name="IglooUnity5">
+        <isRendering>true</isRendering>
+        <fov>90</fov>
+        <is3D>false</is3D>
+        <isRenderTextures>true</isRenderTextures>
+        <cubemapFace>4</cubemapFace>
+        <renderTextureSize x="2000" y="2000" />
+        <textureShareMode>0</textureShareMode>
+        <cameraRotation x="-90" y="0" z="0" />
+        <nearClipPlane>0.01</nearClipPlane>
+        <farClipPlane>1000</farClipPlane>
+        <isFisheye>false</isFisheye>
+        <fisheyeStrength x="0" y="0" />
+        <isOffAxis>false</isOffAxis>
+        <viewportRotation x="0" y="0" z="0" />
+        <viewportSize x="0" y="0" />
+        <viewportPosition x="0" y="0" z="0" />
+        <targetDisplay>-1</targetDisplay>
+      </DisplayItem>
+      <DisplayItem Name="IglooUnity6">
+        <isRendering>true</isRendering>
+        <fov>90</fov>
+        <is3D>false</is3D>
+        <isRenderTextures>true</isRenderTextures>
+        <cubemapFace>5</cubemapFace>
+        <renderTextureSize x="2000" y="2000" />
+        <textureShareMode>0</textureShareMode>
+        <cameraRotation x="90" y="0" z="0" />
+        <nearClipPlane>0.01</nearClipPlane>
+        <farClipPlane>1000</farClipPlane>
+        <isFisheye>false</isFisheye>
+        <fisheyeStrength x="0" y="0" />
+        <isOffAxis>false</isOffAxis>
+        <viewportRotation x="0" y="0" z="0" />
+        <viewportSize x="0" y="0" />
+        <viewportPosition x="0" y="0" z="0" />
+        <targetDisplay>-1</targetDisplay>
+      </DisplayItem>
+    </Displays>
+  </DisplaySettings>
+  <TouchScreenSettings>
+    <XPositionStart>1</XPositionStart>
+    <XPositionEnd>0</XPositionEnd>
+    <YPositionStart>1</YPositionStart>
+    <YPositionEnd>0</YPositionEnd>
+    <UseTouchScreen>false</UseTouchScreen>
+  </TouchScreenSettings>
+</IglooSettings>

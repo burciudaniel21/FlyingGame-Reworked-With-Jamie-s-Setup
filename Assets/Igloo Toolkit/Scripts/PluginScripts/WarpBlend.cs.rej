@@ -1,0 +1,10 @@
+diff a/Scripts/PluginScripts/WarpBlend.cs b/Scripts/PluginScripts/WarpBlend.cs	(rejected hunks)
+@@ -221,7 +221,7 @@
+                 }
+             }
+ 
+-            tex = new Texture2D(texWidth, texHeight, TextureFormat.RGBAFloat, false);
++            tex = new Texture2D(texWidth, texHeight, TextureFormat.RGBA32, false);
+             tex.SetPixels32(pixels);
+             tex.Apply();
+ 

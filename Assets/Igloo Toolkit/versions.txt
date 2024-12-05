@@ -1,0 +1,45 @@
+v1.3.9 - Optitrack
+------
+
+* Optitrack rigidbody IDs can now be changed via settings.xml
+* Settings wizard updated
+* Fixed but where OSC send IP Address wasn't being read. 
+
+v1.3.8 - Optitrack
+------
+
+* Optitrack can now be pulled from a different server IP Address
+
+v1.3.7 - Settings File 
+------
+
+* Revized how the Global Settings file functions
+* Revised the settings file contents.
+
+v1.3.6 - True Perspective
+------
+
+* Added Igloo TruePerspective as an output option to Spout, NDI, Stereo, and warp & Blend
+* Revised how packages are added to the package manifest,
+* EXT OSC is now an additional download
+* Klak NDI's Nuget dependency is added to the manifest
+
+v1.3.1 - Hotfix
+------
+
+* Fixed issue with UI Script having an error on start
+* Adjusted colour of crosshair to swap between white and black
+* Small changes to how Igloo prefab is rendered
+
+
+v1.3.0 - Major Release
+------
+
+* Removed redundant example scripts
+* Added Igloo Settings system, and example scene
+* Removed requirement for Virtual Input Cursor within Igloo Manager
+* Added external Klak Spout and NDI package systems
+* Changed Apply Input Settings to Apply Igloo Settings
+* Apply Igloo Settings adds the package references for the Klak packages
+* Button to add spoutResources to Igloo Manager
+* Igloo Settings updates to accomodate the functionality of the Igloo settings UI system

@@ -1,0 +1,31 @@
+{
+    "name": "IglooToolkit..Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4a1b87bfd17ed9d48b6efdeebe680742",
+        "GUID:7cdfac5ef1f961d4ebfe51361a2020bd",
+        "GUID:b59f669f136310547b59ad72df53b42f"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "jp.keijiro.klak.spout",
+            "expression": "1.0",
+            "define": "KLAK_SPOUT"
+        },
+        {
+            "name": "jp.keijiro.klak.ndi",
+            "expression": "1.0",
+            "define": "KLAK_NDI"
+        }
+    ],
+    "noEngineReferences": false
+}

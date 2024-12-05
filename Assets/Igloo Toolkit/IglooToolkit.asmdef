@@ -1,0 +1,66 @@
+{
+    "name": "IglooToolkit",
+    "rootNamespace": "",
+    "references": [
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:7b4b8ddafd710964f8c6a9a1cb414feb",
+        "GUID:dd8bc1162ef4ad24ab0f30ab491a04e8",
+        "GUID:b59f669f136310547b59ad72df53b42f",
+        "GUID:7cdfac5ef1f961d4ebfe51361a2020bd",
+        "GUID:21435214e6169c649985b5540a63188a",
+        "GUID:2bafac87e7f4b9b418d9448d219b01ab",
+        "GUID:8f3c33f6f2efd3e4da3590f32d8bc86a",
+        "GUID:c91614ae7ded24fa5b2766bf0953ec78",
+        "GUID:6d615799e7e2d462e8bddaf22d355665",
+        "GUID:15fc0a57446b3144c949da3e2b9737a9",
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:df380645f10b7bc4b97d4f5eb6303d95",
+        "GUID:eb16ba553b29a6c44b83ab0a146797ba",
+        "GUID:d8b63aba1907145bea998dd612889d6b"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.render-pipelines.universal",
+            "expression": "7.6.0",
+            "define": "IGLOO_URP"
+        },
+        {
+            "name": "com.unity.inputsystem",
+            "expression": "1.0",
+            "define": "UNITY_INPUTSYSTEM"
+        },
+        {
+            "name": "com.unity.render-pipelines.high-definition",
+            "expression": "10.2.2",
+            "define": "IGLOO_HDRP"
+        },
+        {
+            "name": "jp.keijiro.klak.ndi",
+            "expression": "1.0",
+            "define": "KLAK_NDI"
+        },
+        {
+            "name": "jp.keijiro.klak.spout",
+            "expression": "1.0",
+            "define": "KLAK_SPOUT"
+        },
+        {
+            "name": "com.esri.arcgis-maps-sdk",
+            "expression": "1.0",
+            "define": "ESRI"
+        },
+        {
+            "name": "com.iam1337.extosc",
+            "expression": "1.0",
+            "define": "EXT_OSC"
+        }
+    ],
+    "noEngineReferences": false
+}

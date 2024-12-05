@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<IglooSettings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.cpandl.com">
+  <SystemSettings vSyncMode="0" targetFPS="0" />
+  <PlayerSettings Name="player">
+    <usePlayer>true</usePlayer>
+    <headtracking>false</headtracking>
+    <rotationInput>0</rotationInput>
+    <rotationMode>0</rotationMode>
+    <movementInput>0</movementInput>
+    <movementMode>0</movementMode>
+    <runSpeed>10</runSpeed>
+    <walkSpeed>5</walkSpeed>
+    <smoothTime>10</smoothTime>
+  </PlayerSettings>
+  <DisplaySettings Name="IglooUnity">
+    <textureShareMode>0</textureShareMode>
+    <useCubemapToEquirectangular>false</useCubemapToEquirectangular>
+    <equirectangularTexuteRes x="8000" y="1000" />
+    <horizontalFOV>0</horizontalFOV>
+    <verticalFOV>0</verticalFOV>
+    <HeadSettings>
+      <headPositionOffset x="0" y="1.8" z="0" />
+      <headRotationOffset x="-0" y="0" z="0" />
+    </HeadSettings>
+    <useCompositeTexture>false</useCompositeTexture>
+    <useFramepackTopBottom3D>false</useFramepackTopBottom3D>
+    <Displays>
+      <DisplayItem Name="Cam1">
+        <isRendering>true</isRendering>
+        <fov>48.84456</fov>
+        <is3D>false</is3D>
+        <isRenderTextures>true</isRenderTextures>
+        <cubemapFace>0</cubemapFace>
+        <renderTextureSize x="1600" y="1000" />
+        <textureShareMode>1</textureShareMode>
+        <cameraRotation x="0" y="0" z="0" />
+        <nearClipPlane>0.01</nearClipPlane>
+        <farClipPlane>1000</farClipPlane>
+        <isFisheye>true</isFisheye>
+        <fisheyeStrength x="0.28" y="0" />
+        <isOffAxis>false</isOffAxis>
+        <viewportRotation x="-0" y="0" z="0" />
+        <viewportSize x="0" y="0" />
+        <viewportPosition x="0" y="0" z="0" />
+      </DisplayItem>
+      <DisplayItem Name="Cam2">
+        <isRendering>true</isRendering>
+        <fov>48.84456</fov>
+        <is3D>false</is3D>
+        <isRenderTextures>true</isRenderTextures>
+        <cubemapFace>0</cubemapFace>
+        <renderTextureSize x="1600" y="1000" />
+        <textureShareMode>1</textureShareMode>
+        <cameraRotation x="0" y="72" z="0" />
+        <nearClipPlane>0.01</nearClipPlane>
+        <farClipPlane>1000</farClipPlane>
+        <isFisheye>true</isFisheye>
+        <fisheyeStrength x="0.28" y="0" />
+        <isOffAxis>false</isOffAxis>
+        <viewportRotation x="-0" y="0" z="0" />
+        <viewportSize x="0" y="0" />
+        <viewportPosition x="0" y="0" z="0" />
+      </DisplayItem>
+      <DisplayItem Name="Cam3">
+        <isRendering>true</isRendering>
+        <fov>48.84456</fov>
+        <is3D>false</is3D>
+        <isRenderTextures>true</isRenderTextures>
+        <cubemapFace>0</cubemapFace>
+        <renderTextureSize x="1600" y="1000" />
+        <textureShareMode>1</textureShareMode>
+        <cameraRotation x="0" y="144" z="0" />
+        <nearClipPlane>0.01</nearClipPlane>
+        <farClipPlane>1000</farClipPlane>
+        <isFisheye>true</isFisheye>
+        <fisheyeStrength x="0.28" y="0" />
+        <isOffAxis>false</isOffAxis>
+        <viewportRotation x="-0" y="0" z="0" />
+        <viewportSize x="0" y="0" />
+        <viewportPosition x="0" y="0" z="0" />
+      </DisplayItem>
+      <DisplayItem Name="Cam4">
+        <isRendering>true</isRendering>
+        <fov>48.84456</fov>
+        <is3D>false</is3D>
+        <isRenderTextures>true</isRenderTextures>
+        <cubemapFace>0</cubemapFace>
+        <renderTextureSize x="1600" y="1000" />
+        <textureShareMode>1</textureShareMode>
+        <cameraRotation x="0" y="216" z="0" />
+        <nearClipPlane>0.01</nearClipPlane>
+        <farClipPlane>1000</farClipPlane>
+        <isFisheye>true</isFisheye>
+        <fisheyeStrength x="0.28" y="0" />
+        <isOffAxis>false</isOffAxis>
+        <viewportRotation x="-0" y="0" z="0" />
+        <viewportSize x="0" y="0" />
+        <viewportPosition x="0" y="0" z="0" />
+      </DisplayItem>
+      <DisplayItem Name="Cam5">
+        <isRendering>true</isRendering>
+        <fov>48.84456</fov>
+        <is3D>false</is3D>
+        <isRenderTextures>true</isRenderTextures>
+        <cubemapFace>0</cubemapFace>
+        <renderTextureSize x="1600" y="1000" />
+        <textureShareMode>1</textureShareMode>
+        <cameraRotation x="0" y="288" z="0" />
+        <nearClipPlane>0.01</nearClipPlane>
+        <farClipPlane>1000</farClipPlane>
+        <isFisheye>true</isFisheye>
+        <fisheyeStrength x="0.28" y="0" />
+        <isOffAxis>false</isOffAxis>
+        <viewportRotation x="-0" y="0" z="0" />
+        <viewportSize x="0" y="0" />
+        <viewportPosition x="0" y="0" z="0" />
+      </DisplayItem>
+    </Displays>
+  </DisplaySettings>
+</IglooSettings>

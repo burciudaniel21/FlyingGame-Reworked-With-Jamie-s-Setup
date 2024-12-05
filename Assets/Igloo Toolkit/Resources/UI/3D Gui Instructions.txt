@@ -1,0 +1,24 @@
+The 3D GUI uses the same GUI elements that is used to create 2D GUI's in Unity. This makes it possible to to import any 2D Canvas made in Unity to a 3D scene that can be used inside the Igloo. To make the GUI elements interactable in 3D space, we use a virtual cursor that replicates the functionality that the windows cursor has, but in 3D space.
+
+----How it works----
+In order to have the 2D Ui Canvas on any 3D object in the scene, the canvas is first rendered to a texture in screen space using a separate camera in the scene. On this canvas is a virtual cursor that is used to do collision testing with the UI elements on the canvas. With the "Virtual Input Module", the virtual cursor can interact with the elements on this UI as if it was in 2D.
+
+The rendered texture can then be applied to any UV mapped object. In the example scene we use shader "3D_UI_Display" which allows unlit,transparancy-enabled rendering of the UI.
+
+----Setup----
+
+1. Import your canvas into the scene and set render mode to "Screen Space - Camera"
+2. Add a "Graphic Raycaster" component to your canvas
+3. In the asset browser go to "Assets->IglooToolkit->Resources->Prefabs->3D GUI"
+4. Add "UICamera" prefab to your scene and add the camera to the canvas "Render Camera"
+5. Add "Virtual Input Cursor" as the top child of your canvas. 
+6. Add "Virtual input Event System" to your scene.
+7. Open the event system in the inspector. On the "Virtual Input Module" script add the cursor object to "Virtual Cursor" input, and add the "UICamera" to the "Canvas Camera" input. 
+8. If the UICamera does not have a "Target Texture", create a renderTexture and apply.
+9. In the asset browser go to "Assets->IglooToolkit->Materials" and apply "3D_UI_Display" to the object that you want to display the UI. (If the render texture is not applied, apply it as the shader input)
+
+
+
+----Notes----
+* The Cursor object does not get movement data from the windows cursor. You'll have to use your own method of input to translate the cursor on the canvas. In the example scene, we use the script "Player Pointer" attached to the main camera object, and the "Draw UI" script on the "6m_Screen" object to alter it's position.
+* It's recommended to add a new render layer for your 3D GUI, and go to the "Graphic Raycaster" on the canvas to set the "Blocking Mask" to your 3D GUI layer. Apply the layer to all the UI elements you want to be interactable.
