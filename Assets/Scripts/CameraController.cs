@@ -1,20 +1,36 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class CameraController : MonoBehaviour
 {
-    public Transform target; // The player or object the camera will orbit around
-    public float rotationSpeed = 100f; // Speed of rotation
+    [Header("Targets")]
+    public List<Transform> targets; // List of possible targets
 
-    private float horizontalInput;
-    private float verticalInput;
+    private Transform currentTarget; // The currently active target
 
     void Update()
     {
-        // Rotate around the target based on input
-        transform.RotateAround(target.position, Vector3.up, horizontalInput * rotationSpeed * Time.deltaTime);
-        transform.RotateAround(target.position, transform.right, -verticalInput * rotationSpeed * Time.deltaTime);
+        // Find the first active target in the list
+        foreach (Transform target in targets)
+        {
+            if (target != null && target.gameObject.activeSelf)
+            {
+                currentTarget = target;
+                break; // Stop checking after finding the first active target
+            }
+        }
 
-        // Maintain camera's offset from the target
-        transform.LookAt(target);
+        // Rotate to face the active target
+        if (currentTarget != null)
+        {
+            RotateTowardsTarget();
+        }
+    }
+
+    private void RotateTowardsTarget()
+    {
+        // Make the camera look at the current target
+        Vector3 directionToTarget = currentTarget.position - transform.position;
+        transform.rotation = Quaternion.LookRotation(directionToTarget, Vector3.up);
     }
 }
