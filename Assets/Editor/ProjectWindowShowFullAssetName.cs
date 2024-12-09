@@ -1,9 +1,13 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI.MessageBox;
+
+
 
 // This static class customizes how asset names are displayed in Unity's Project Window.
 // It allows for multiline display of asset names and optional expansion of camelCase, PascalCase kebab-case and snake_case with spacing.
@@ -19,8 +23,14 @@ public static class ProjectWindowShowFullAssetName
     private static bool EnableMultilineDisplay => EditorPrefs.GetBool(PrefKey_EnableMultilineDisplay, true);
     private static bool EnableCamelCaseSpacing => EditorPrefs.GetBool(PrefKey_EnableCamelCaseSpacing, true);
 
+
+
+    static Dictionary<int, float> clickTimes = new Dictionary<int, float>(); // Track click times for each instanceID
+    const float RenameDelay = 0.5f; // Time (in seconds) to wait for initiating renaming after a single click
+
     // Styles and visual customization variables
     static GUIStyle style;
+
     static GUIContent assetGUIContent;
     static Color32 backgroundColor;
     static Color32 selectedFrameColor;
@@ -57,13 +67,15 @@ public static class ProjectWindowShowFullAssetName
     }
 
     // Called for each item in the Project Window to customize its appearance
+
+
     static void Draw(int instanceID, Rect selectionRect)
     {
         // Skip drawing if multiline display is disabled
         if (!EnableMultilineDisplay)
             return;
 
-        // Check if the asset is currently being renamed and skip rendering
+        // Check if the asset is currently being renamed
         if (IsRenaming(selectionRect, instanceID))
             return;
 
@@ -91,11 +103,40 @@ public static class ProjectWindowShowFullAssetName
         // Define the area where the filename will be rendered
         var nameRect = new Rect(selectionRect.x, selectionRect.yMax - 12, selectionRect.width, textHeight + 4);
 
-        // Handle mouse click events for selecting the asset
+        // Handle mouse click events for selecting and renaming the asset
         if (Event.current.type == EventType.MouseDown && nameRect.Contains(Event.current.mousePosition))
         {
-            Selection.activeInstanceID = instanceID;
-            Event.current.Use();
+            if (!clickTimes.ContainsKey(instanceID))
+                clickTimes[instanceID] = 0;
+
+            float currentTime = (float)EditorApplication.timeSinceStartup;
+            float lastClickTime = clickTimes[instanceID];
+            clickTimes[instanceID] = currentTime;
+
+            if (Selection.activeInstanceID == instanceID)
+            {
+                if (Event.current.clickCount == 2) // Double-click
+                {
+                    // Open the asset
+                    AssetDatabase.OpenAsset(instanceID);
+                    Event.current.Use();
+                }
+                else if (currentTime - lastClickTime > RenameDelay) // Single-click after delay
+                {
+                    // Start renaming the asset
+                    EditorApplication.delayCall += () =>
+                    {
+                        if (Selection.activeInstanceID == instanceID) // Ensure still selected
+                            EditorApplication.ExecuteMenuItem("Assets/Rename");
+                    };
+                    Event.current.Use();
+                }
+            }
+            else
+            {
+                Selection.activeInstanceID = instanceID; // Select the asset
+                Event.current.Use();
+            }
         }
 
         // Check if the item is selected
@@ -107,6 +148,9 @@ public static class ProjectWindowShowFullAssetName
         EditorGUI.DrawRect(backgroundRect, isSelected ? selectedFrameColor : backgroundColor);
         GUI.Label(nameRect, assetName, style);
     }
+
+
+
 
     // Helper method to check if the asset is currently being renamed
     static bool IsRenaming(Rect selectionRect, int instanceID)
