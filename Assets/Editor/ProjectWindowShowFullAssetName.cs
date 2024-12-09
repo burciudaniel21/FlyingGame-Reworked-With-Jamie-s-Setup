@@ -111,9 +111,15 @@ public class ProjectWindowPreferences : SettingsProvider
 
     public override void OnGUI(string searchContext)
     {
+        const float labelWidth = 200f; // Adjust this value to control how far over the checkboxes are tabbed
+
         // Multiline Display Toggle
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Enable Multiline Display", GUILayout.Width(labelWidth));
         bool currentMultilineSetting = EditorPrefs.GetBool(ProjectWindowShowFullAssetName.PrefKey_EnableMultilineDisplay, true);
-        bool newMultilineSetting = EditorGUILayout.Toggle("Enable Multiline Display", currentMultilineSetting);
+        bool newMultilineSetting = EditorGUILayout.Toggle(currentMultilineSetting);
+        GUILayout.EndHorizontal();
+
         if (newMultilineSetting != currentMultilineSetting)
         {
             EditorPrefs.SetBool(ProjectWindowShowFullAssetName.PrefKey_EnableMultilineDisplay, newMultilineSetting);
@@ -122,8 +128,12 @@ public class ProjectWindowPreferences : SettingsProvider
 
         // CamelCase Spacing Toggle (disabled if multiline display is off)
         EditorGUI.BeginDisabledGroup(!newMultilineSetting);
+        GUILayout.BeginHorizontal();
+        GUILayout.Label("Enable Expanded Filenames", GUILayout.Width(labelWidth));
         bool currentCamelCaseSetting = EditorPrefs.GetBool(ProjectWindowShowFullAssetName.PrefKey_EnableCamelCaseSpacing, true);
-        bool newCamelCaseSetting = EditorGUILayout.Toggle("Enable Expanded Filenames", currentCamelCaseSetting);
+        bool newCamelCaseSetting = EditorGUILayout.Toggle(currentCamelCaseSetting);
+        GUILayout.EndHorizontal();
+
         if (newCamelCaseSetting != currentCamelCaseSetting)
         {
             EditorPrefs.SetBool(ProjectWindowShowFullAssetName.PrefKey_EnableCamelCaseSpacing, newCamelCaseSetting);
