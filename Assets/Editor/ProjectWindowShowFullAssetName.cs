@@ -1,6 +1,6 @@
 using System;
 using System.IO;
-using System.Linq; // For Contains()
+using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEditor;
 using UnityEngine;
@@ -117,15 +117,19 @@ public class ProjectWindowPreferences : SettingsProvider
         if (newMultilineSetting != currentMultilineSetting)
         {
             EditorPrefs.SetBool(ProjectWindowShowFullAssetName.PrefKey_EnableMultilineDisplay, newMultilineSetting);
+            EditorApplication.RepaintProjectWindow(); // Refresh the Project window
         }
 
-        // CamelCase Spacing Toggle
+        // CamelCase Spacing Toggle (disabled if multiline display is off)
+        EditorGUI.BeginDisabledGroup(!newMultilineSetting);
         bool currentCamelCaseSetting = EditorPrefs.GetBool(ProjectWindowShowFullAssetName.PrefKey_EnableCamelCaseSpacing, true);
         bool newCamelCaseSetting = EditorGUILayout.Toggle("Enable Expanded Filenames", currentCamelCaseSetting);
         if (newCamelCaseSetting != currentCamelCaseSetting)
         {
             EditorPrefs.SetBool(ProjectWindowShowFullAssetName.PrefKey_EnableCamelCaseSpacing, newCamelCaseSetting);
+            EditorApplication.RepaintProjectWindow(); // Refresh the Project window
         }
+        EditorGUI.EndDisabledGroup();
     }
 
     [SettingsProvider]
