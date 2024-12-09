@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 
 // This static class customizes how asset names are displayed in Unity's Project Window.
-// It allows for multiline display of asset names and optional camelCase/PascalCase/kebab-case spacing.
+// It allows for multiline display of asset names and optional expansion of camelCase, PascalCase kebab-case and snake_case with spacing.
 [InitializeOnLoad]
 public static class ProjectWindowShowFullAssetName
 {
