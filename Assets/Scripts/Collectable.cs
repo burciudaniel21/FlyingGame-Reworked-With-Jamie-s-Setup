@@ -7,6 +7,7 @@ public class Collectable : MonoBehaviour
 {
     public AudioClip collectSound; // Reference to the sound effect
     private AudioSource audioSource;
+    private Renderer objectRenderer; // Reference to the renderer
 
     void Start()
     {
@@ -20,6 +21,9 @@ public class Collectable : MonoBehaviour
         // Configure the AudioSource
         audioSource.playOnAwake = false;
         audioSource.spatialBlend = 1.0f; // 3D sound (set to 0.0 for 2D sound)
+
+        // Get the renderer to hide the object
+        objectRenderer = GetComponent<Renderer>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -34,7 +38,14 @@ public class Collectable : MonoBehaviour
                 audioSource.PlayOneShot(collectSound);
             }
 
-            // Disable the object after the sound finishes
+            // Hide the object and disable the collider
+            if (objectRenderer != null)
+            {
+                objectRenderer.enabled = false; // Hide the object visually
+            }
+            GetComponent<Collider>().enabled = false; // Disable collision
+
+            // Deactivate the object after the sound finishes
             StartCoroutine(DeactivateAfterSound());
         }
     }
@@ -44,7 +55,7 @@ public class Collectable : MonoBehaviour
         // Wait for the sound to finish playing
         yield return new WaitForSeconds(collectSound.length);
 
-        // Deactivate the collectable object
+        // Deactivate the object
         gameObject.SetActive(false);
     }
 }
