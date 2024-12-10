@@ -1,12 +1,17 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 public class CameraSwitcher : MonoBehaviour
 {
-    private Camera[] cameras; // Array to store all cameras
+    private List<Camera> toggleCameras = new List<Camera>(); // List to store cameras to toggle
     private int currentCameraIndex = 0; // Index to track the current active camera
-    [SerializeField]
-    private int initialCamera = 0;
+
+    [Header("Camera References")]
+    public Camera manuallyPlacedCamera; // Manually assigned camera in the Inspector
+    public string iglooCameraPath = "IglooManager/Igloo(Clone)/Head/DefaultCamera/Camera"; // Path to the dynamically generated Igloo camera
+    public Transform planeCameraTransform; // Reference to the plane's camera (optional)
+    public Transform balloonCameraTransform; // Reference to the hot air balloon's camera (optional)
 
     [Header("Input Actions")]
     public InputActionReference switchCameraAction; // Reference to the SwitchCamera action
@@ -27,27 +32,73 @@ public class CameraSwitcher : MonoBehaviour
 
     private void Start()
     {
-        // Find all active cameras in the scene
+        // Populate the camera list
         UpdateCameraList();
 
-        // Set current camera to initialCamera if it exists
-        if (initialCamera >= cameras.Length || initialCamera < 0)
-            initialCamera = 0;
-        ActivateCamera(initialCamera);
+        // Validate the camera list
+        if (toggleCameras.Count == 0)
+        {
+            Debug.LogError("No cameras found for toggling!");
+            return;
+        }
+
+        // Activate the first camera and deactivate others
+        ActivateCamera(currentCameraIndex);
     }
 
-    // Updates the list of cameras (in case cameras are added dynamically)
+    // Updates the list of cameras dynamically
     public void UpdateCameraList()
     {
-        cameras = Camera.allCameras;
+        toggleCameras.Clear();
+
+        // Add the manually placed camera
+        if (manuallyPlacedCamera != null && manuallyPlacedCamera.isActiveAndEnabled)
+        {
+            toggleCameras.Add(manuallyPlacedCamera);
+        }
+
+        // Add the dynamically generated Igloo camera
+        Camera iglooCamera = GameObject.Find(iglooCameraPath)?.GetComponent<Camera>();
+        if (iglooCamera != null && iglooCamera.isActiveAndEnabled)
+        {
+            toggleCameras.Add(iglooCamera);
+        }
+
+        // Add the plane camera if available and active
+        if (planeCameraTransform != null)
+        {
+            Camera planeCamera = planeCameraTransform.GetComponentInChildren<Camera>();
+            if (planeCamera != null && planeCamera.isActiveAndEnabled)
+            {
+                toggleCameras.Add(planeCamera);
+            }
+        }
+
+        // Add the balloon camera if available and active
+        if (balloonCameraTransform != null)
+        {
+            Camera balloonCamera = balloonCameraTransform.GetComponentInChildren<Camera>();
+            if (balloonCamera != null && balloonCamera.isActiveAndEnabled)
+            {
+                toggleCameras.Add(balloonCamera);
+            }
+        }
+
+        // Adjust the current camera index if the active camera was removed
+        if (currentCameraIndex >= toggleCameras.Count)
+        {
+            currentCameraIndex = 0;
+        }
     }
 
     // Activates the camera at the given index
     private void ActivateCamera(int index)
     {
-        for (int i = 0; i < cameras.Length; i++)
+        for (int i = 0; i < toggleCameras.Count; i++)
         {
-            cameras[i].gameObject.SetActive(i == index);
+            bool shouldEnable = i == index;
+            toggleCameras[i].gameObject.SetActive(shouldEnable);
+            toggleCameras[i].enabled = shouldEnable;
         }
     }
 
@@ -57,16 +108,15 @@ public class CameraSwitcher : MonoBehaviour
         SwitchCamera();
     }
 
-    // Switches to the next camera
+    // Switches to the next camera in the toggle list
     public void SwitchCamera()
     {
-        if (cameras == null || cameras.Length == 0) return;
+        if (toggleCameras.Count == 0) return;
 
-        // Switch between cameras
-        currentCameraIndex = (currentCameraIndex == 0) ? 1 : 0;
+        // Increment the camera index, looping back to 0 if it exceeds the list count
+        currentCameraIndex = (currentCameraIndex + 1) % toggleCameras.Count;
 
         // Activate the next camera
         ActivateCamera(currentCameraIndex);
     }
 }
-

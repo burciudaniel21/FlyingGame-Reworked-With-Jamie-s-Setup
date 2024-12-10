@@ -19,7 +19,7 @@ public class HotAirBalloonTorchSound : MonoBehaviour
     public InputActionReference heatBalloonAction; // Button press for heating the balloon
 
     private Transform balloonTransform; // Reference to the balloon's transform
-    private Transform cameraTransform; // Reference to the camera's transform
+    private Transform cameraTransform; // Reference to the currently active camera's transform
 
     private void OnEnable()
     {
@@ -37,7 +37,9 @@ public class HotAirBalloonTorchSound : MonoBehaviour
         audioSource.playOnAwake = false; // Do not play on start
         audioSource.volume = 0f; // Start muted
         balloonTransform = transform;
-        cameraTransform = Camera.main.transform; // Reference to the camera
+
+        // Initialize the camera reference
+        UpdateCameraReference();
     }
 
     private void OnDisable()
@@ -51,7 +53,7 @@ public class HotAirBalloonTorchSound : MonoBehaviour
 
     private void Update()
     {
-        if (audioSource.isPlaying)
+        if (audioSource.isPlaying && cameraTransform != null)
         {
             // Calculate the distance between the balloon and the camera
             float distance = Vector3.Distance(balloonTransform.position, cameraTransform.position);
@@ -121,5 +123,33 @@ public class HotAirBalloonTorchSound : MonoBehaviour
         audioSource.volume = 0f;
         audioSource.Stop();
         isFadingOut = false;
+    }
+
+    private void UpdateCameraReference()
+    {
+        Camera activeCamera = Camera.main; // Use the MainCamera tag
+        if (activeCamera != null)
+        {
+            cameraTransform = activeCamera.transform;
+        }
+        else
+        {
+            Debug.LogWarning("No camera tagged as 'MainCamera' is active!");
+            cameraTransform = null;
+        }
+    }
+
+    // Call this method whenever the active camera changes
+    public void OnActiveCameraChanged(Camera newCamera)
+    {
+        if (newCamera != null)
+        {
+            cameraTransform = newCamera.transform;
+        }
+        else
+        {
+            Debug.LogWarning("The new active camera is null!");
+            cameraTransform = null;
+        }
     }
 }
