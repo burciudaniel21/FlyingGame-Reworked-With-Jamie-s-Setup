@@ -371,6 +371,66 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6.3900003, y: 2.24, z: 5.7}
   m_Center: {x: 0, y: 1.12, z: 0}
+--- !u!1 &1192526192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1192526194}
+  - component: {fileID: 1192526193}
+  m_Layer: 0
+  m_Name: SkyboxChanger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1192526193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192526192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdca4634002596f41a5c020893fb5b03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skyboxes:
+  - {fileID: 2100000, guid: 5717de02911a51e4e8b2fa253aed9fdc, type: 2}
+  - {fileID: 2100000, guid: 85a2bc9e5db22d74db1540ef5b278c74, type: 2}
+  - {fileID: 2100000, guid: c94d68c9d17a6cb45ab0f280674c0348, type: 2}
+  - {fileID: 2100000, guid: 35e6c9149f1bc494f885c0f0c6070fe5, type: 2}
+  - {fileID: 2100000, guid: ceaf0c2e5525b2b45887ab50b154c118, type: 2}
+  - {fileID: 2100000, guid: ddffb0d758ce18b47925632944aed655, type: 2}
+  - {fileID: 2100000, guid: 2e1cfb1b774ecd84b80e670da8da4f97, type: 2}
+  - {fileID: 2100000, guid: 518bfbebb30bb5b4bb88826a82b2dac1, type: 2}
+  - {fileID: 2100000, guid: 7a407ee272670044e94eca4c1afedc74, type: 2}
+  - {fileID: 2100000, guid: 599fab7a9335c8d40a763632d0e16ea4, type: 2}
+  - {fileID: 2100000, guid: e700f6bdf87e175479e40a95f874927c, type: 2}
+  - {fileID: 2100000, guid: 7f98e7ff226cc8c449a7da08501e09b5, type: 2}
+  - {fileID: 2100000, guid: 1dcfa47452fe82f429f6ebbdb2075d27, type: 2}
+  - {fileID: 2100000, guid: eff8c375ca6f7f6419290d59f9d3acbc, type: 2}
+  - {fileID: 2100000, guid: 762e31b3252a6e24e96b1b601f667f91, type: 2}
+--- !u!4 &1192526194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192526192}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -31.880865, y: 0.21810097, z: -22.502745}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1472466960
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,6 +442,7 @@ GameObject:
   - component: {fileID: 1472466962}
   - component: {fileID: 1472466961}
   - component: {fileID: 1472466963}
+  - component: {fileID: 1472466964}
   m_Layer: 0
   m_Name: Toggler
   m_TagString: Untagged
@@ -435,6 +496,33 @@ MonoBehaviour:
   pushBackForce: 10
   dampingFactor: 5
   cooldownTime: 0.5
+--- !u!54 &1472466964
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472466960}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1522004415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -558,7 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9ea90a71ae8b4242a4e7646a47bd3d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 400
+  maxDistance: 150
   returnSpeed: 10
 --- !u!1 &1675695622
 GameObject:
@@ -1060,7 +1148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be87359b9c2ad924c815551bc30e1a1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 350
+  maxDistance: 150
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1072,3 +1160,4 @@ SceneRoots:
   - {fileID: 1472466962}
   - {fileID: 1675695627}
   - {fileID: 464300913}
+  - {fileID: 1192526194}
