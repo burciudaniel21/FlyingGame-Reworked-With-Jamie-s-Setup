@@ -93,7 +93,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1223303115799505661}
   - component: {fileID: 123384394489574536}
-  - component: {fileID: 4325600944961312283}
   - component: {fileID: 562365262325669052}
   - component: {fileID: 9083341507902251181}
   - component: {fileID: 4095938866924129320}
@@ -137,32 +136,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3ba0be24d239b64cb5fe7795316fc63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
   pitchSpeed: 100
   rollSpeed: 100
   yawSpeed: 20
   throttleSpeed: 10
   maxSpeed: 100
   minSpeed: 10
-  pitchAxis: Vertical
-  rollAxis: Horizontal
-  yawAxis: Yaw
-  throttleAxis: Throttle
---- !u!114 &4325600944961312283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2593784100022095515}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb63bd74fa56a384a981b224ba83ab54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pushBackForce: 10
-  dampingFactor: 5
-  cooldownTime: 0.5
+  pitchRollAction: {fileID: 0}
+  yawAction: {fileID: 0}
+  throttleAction: {fileID: 0}
 --- !u!54 &562365262325669052
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -319,6 +301,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDistance: 150
   returnSpeed: 10
+  turnSpeed: 2
+  dampingFactor: 0.9
 --- !u!1 &2717006583553966381
 GameObject:
   m_ObjectHideFlags: 0
