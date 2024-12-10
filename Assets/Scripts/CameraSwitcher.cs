@@ -19,7 +19,7 @@ public class CameraSwitcher : MonoBehaviour
     void Update()
     {
         // Switch cameras when the player presses the Tab key
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) || Input.GetButtonDown("Start Button"))
         {
             SwitchCamera();
         }
