@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent (typeof(Rigidbody))]
 public class PushBack : MonoBehaviour
 {
     public float pushBackForce = 10f; // Initial pushback force
