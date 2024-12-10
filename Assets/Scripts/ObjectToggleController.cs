@@ -1,24 +1,34 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ObjectToggleController : MonoBehaviour
 {
     public GameObject object1; // Assign the first GameObject in the Inspector
     public GameObject object2; // Assign the second GameObject in the Inspector
 
-    [Header("Input Settings")]
-    public KeyCode keyboardToggleKey = KeyCode.V; // Keyboard toggle key
-    public string controllerToggleButton = "joystick button 3"; // Y button on most controllers
+    [Header("Input Action")]
+    public InputActionReference switchVehicleAction; // Reference to the SwitchVehicle action
 
-    void Update()
+    private void OnEnable()
     {
-        // Check for keyboard or controller input
-        if (Input.GetKeyDown(keyboardToggleKey) || Input.GetKeyDown(controllerToggleButton))
-        {
-            ToggleObjects();
-        }
+        // Enable the input action
+        switchVehicleAction.action.Enable();
+        switchVehicleAction.action.performed += OnSwitchVehiclePerformed;
     }
 
-    void ToggleObjects()
+    private void OnDisable()
+    {
+        // Disable the input action
+        switchVehicleAction.action.Disable();
+        switchVehicleAction.action.performed -= OnSwitchVehiclePerformed;
+    }
+
+    private void OnSwitchVehiclePerformed(InputAction.CallbackContext context)
+    {
+        ToggleObjects();
+    }
+
+    private void ToggleObjects()
     {
         // Toggle the active states of the two objects
         bool isObject1Active = object1.activeSelf;

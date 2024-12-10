@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraSwitcher : MonoBehaviour
 {
@@ -7,22 +8,32 @@ public class CameraSwitcher : MonoBehaviour
     [SerializeField]
     private int initialCamera = 0;
 
-    void Start()
+    [Header("Input Actions")]
+    public InputActionReference switchCameraAction; // Reference to the SwitchCamera action
+
+    private void OnEnable()
+    {
+        // Enable the input action
+        switchCameraAction.action.Enable();
+        switchCameraAction.action.performed += OnSwitchCameraPerformed;
+    }
+
+    private void OnDisable()
+    {
+        // Disable the input action
+        switchCameraAction.action.Disable();
+        switchCameraAction.action.performed -= OnSwitchCameraPerformed;
+    }
+
+    private void Start()
     {
         // Find all active cameras in the scene
         UpdateCameraList();
-        // Set cuurent Camera to initialCamera if it exists.
-        if (initialCamera > cameras.Length || initialCamera < 0) initialCamera = 0;
-        ActivateCamera(initialCamera);
-    }
 
-    void Update()
-    {
-        // Switch cameras when the player presses the Tab key
-        if (Input.GetKeyDown(KeyCode.Tab) || Input.GetButtonDown("Start Button"))
-        {
-            SwitchCamera();
-        }
+        // Set current camera to initialCamera if it exists
+        if (initialCamera >= cameras.Length || initialCamera < 0)
+            initialCamera = 0;
+        ActivateCamera(initialCamera);
     }
 
     // Updates the list of cameras (in case cameras are added dynamically)
@@ -40,16 +51,22 @@ public class CameraSwitcher : MonoBehaviour
         }
     }
 
-    // Switches to the next camera 
+    // Handles the input action to switch the camera
+    private void OnSwitchCameraPerformed(InputAction.CallbackContext context)
+    {
+        SwitchCamera();
+    }
+
+    // Switches to the next camera
     public void SwitchCamera()
     {
         if (cameras == null || cameras.Length == 0) return;
 
-        //Switch between cameras 0 and 1
+        // Switch between cameras
         currentCameraIndex = (currentCameraIndex == 0) ? 1 : 0;
-
 
         // Activate the next camera
         ActivateCamera(currentCameraIndex);
     }
 }
+

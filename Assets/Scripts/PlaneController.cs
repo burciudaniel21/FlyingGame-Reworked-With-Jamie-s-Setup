@@ -1,58 +1,70 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlaneController : MonoBehaviour
 {
     [Header("Flight Settings")]
-    public float speed = 50f; // Base speed of the plane
-    public float pitchSpeed = 50f; // Pitch control speed
-    public float rollSpeed = 50f; // Roll control speed
-    public float yawSpeed = 20f; // Yaw control speed
-    public float throttleSpeed = 10f; // Throttle adjustment speed
-    public float maxSpeed = 100f; // Maximum speed
-    public float minSpeed = 10f; // Minimum speed
+    public float pitchSpeed = 50f;
+    public float rollSpeed = 50f;
+    public float yawSpeed = 20f;
+    public float throttleSpeed = 10f;
+    public float maxSpeed = 100f;
+    public float minSpeed = 10f;
 
     private float throttleInput = 0f;
+    private Vector2 pitchRollInput; // Left Thumbstick or WASD
+    private float yawInput;         // Right Thumbstick or Q/E
+    private float throttleDelta;    // Right Trigger or R/F
 
-    [Header("Input Settings")]
-    public string pitchAxis = "Vertical"; // Default for keyboard is "Vertical"
-    public string rollAxis = "Horizontal"; // Default for keyboard is "Horizontal"
-    public string yawAxis = "Yaw"; // Custom input axis for yaw
-    public string throttleAxis = "Throttle"; // Custom input axis for throttle (optional for controller)
+    [Header("Input Actions")]
+    public InputActionReference pitchRollAction; // Vector2 for pitch and roll
+    public InputActionReference yawAction;      // Axis for yaw
+    public InputActionReference throttleAction; // Axis for throttle
+
+    private void OnEnable()
+    {
+        pitchRollAction.action.Enable();
+        yawAction.action.Enable();
+        throttleAction.action.Enable();
+    }
+
+    private void OnDisable()
+    {
+        pitchRollAction.action.Disable();
+        yawAction.action.Disable();
+        throttleAction.action.Disable();
+    }
 
     private void Update()
     {
+        ReadInput();
         HandleThrottle();
         HandleFlightControls();
     }
 
+    private void ReadInput()
+    {
+        pitchRollInput = pitchRollAction.action.ReadValue<Vector2>(); // Left Thumbstick or WASD
+        yawInput = yawAction.action.ReadValue<float>();               // Right Thumbstick or Q/E
+        throttleDelta = throttleAction.action.ReadValue<float>();     // Left Thumbstick or R/F
+    }
+
     private void HandleThrottle()
     {
-        // Throttle adjustment with keyboard keys or controller axis
-        if (Input.GetAxis(throttleAxis) != 0)
-        {
-            throttleInput -= Input.GetAxis(throttleAxis) * throttleSpeed * Time.deltaTime; // Invert controller throttle
-        }
-        else
-        {
-            throttleInput -= Input.GetKey(KeyCode.W) ? throttleSpeed * Time.deltaTime : 0f; // W decreases throttle
-            throttleInput += Input.GetKey(KeyCode.S) ? throttleSpeed * Time.deltaTime : 0f; // S increases throttle
-        }
-
+        throttleInput += throttleDelta * throttleSpeed * Time.deltaTime;
         throttleInput = Mathf.Clamp(throttleInput, minSpeed, maxSpeed);
     }
 
     private void HandleFlightControls()
     {
-        float pitch = Input.GetAxis(pitchAxis) * -pitchSpeed * Time.deltaTime; // Inverted pitch
-        float roll = Input.GetAxis(rollAxis) * rollSpeed * Time.deltaTime;
-        float yaw = Input.GetAxis(yawAxis) * yawSpeed * Time.deltaTime;
+        float pitch = pitchRollInput.y * pitchSpeed * Time.deltaTime;
+        float roll = pitchRollInput.x * rollSpeed * Time.deltaTime;
+        float yaw = yawInput * yawSpeed * Time.deltaTime;
 
-        // Apply rotation to the plane
-        transform.Rotate(Vector3.right, -pitch);
+        transform.Rotate(Vector3.right, pitch);
         transform.Rotate(Vector3.up, yaw);
         transform.Rotate(Vector3.forward, -roll);
 
-        // Move forward based on throttle
         transform.position += transform.forward * throttleInput * Time.deltaTime;
     }
 }
