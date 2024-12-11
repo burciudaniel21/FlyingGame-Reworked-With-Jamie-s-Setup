@@ -51,17 +51,17 @@ public class CameraSwitcher : MonoBehaviour
     {
         toggleCameras.Clear();
 
-        // Add the manually placed camera
-        if (manuallyPlacedCamera != null && manuallyPlacedCamera.isActiveAndEnabled)
-        {
-            toggleCameras.Add(manuallyPlacedCamera);
-        }
-
         // Add the dynamically generated Igloo camera
         Camera iglooCamera = GameObject.Find(iglooCameraPath)?.GetComponent<Camera>();
         if (iglooCamera != null && iglooCamera.isActiveAndEnabled)
         {
             toggleCameras.Add(iglooCamera);
+        }
+
+        // Add the manually placed camera
+        if (manuallyPlacedCamera != null && manuallyPlacedCamera.isActiveAndEnabled)
+        {
+            toggleCameras.Add(manuallyPlacedCamera);
         }
 
         // Add the plane camera if available and active
