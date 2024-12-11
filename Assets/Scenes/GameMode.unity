@@ -184,7 +184,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7c158d46f711d48c0b1f8967a5615573,
         type: 3}
       propertyPath: m_Name
-      value: air_balloon_red
+      value: Balloon
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7c158d46f711d48c0b1f8967a5615573,
         type: 3}
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 1506260862}
   - component: {fileID: 1506260861}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: FollowCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -972,6 +972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1043b9f5d4ad0024892335c089f2659d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toggleCameras: []
   manuallyPlacedCamera: {fileID: 1506260864}
   iglooCameraPath: IglooManager/Igloo(Clone)/Head/DefaultCamera/Camera
   planeCameraTransform: {fileID: 1515139502}
@@ -1610,7 +1611,7 @@ PrefabInstance:
     - target: {fileID: 2593784100022095515, guid: 51b508c628cb89b45b090d5e81313144,
         type: 3}
       propertyPath: m_Name
-      value: light_plane_yellow
+      value: Plane
       objectReference: {fileID: 0}
     - target: {fileID: 4095938866924129320, guid: 51b508c628cb89b45b090d5e81313144,
         type: 3}

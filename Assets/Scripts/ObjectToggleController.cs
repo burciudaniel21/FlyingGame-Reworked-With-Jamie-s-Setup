@@ -30,10 +30,39 @@ public class ObjectToggleController : MonoBehaviour
 
     private void ToggleObjects()
     {
-        // Toggle the active states of the two objects
         bool isObject1Active = object1.activeSelf;
 
-        object1.SetActive(!isObject1Active); // Set object1 to the opposite state
-        object2.SetActive(isObject1Active);  // Set object2 to the opposite state
+        object1.SetActive(!isObject1Active); // Toggle object1 (e.g., the plane)
+        object2.SetActive(isObject1Active);  // Toggle object2 (e.g., the balloon)
+
+        // Refresh the camera list to ensure active cameras are included
+        CameraSwitcher cameraSwitcher = FindObjectOfType<CameraSwitcher>();
+        if (cameraSwitcher != null)
+        {
+            cameraSwitcher.UpdateCameraList();
+            cameraSwitcher.ActivateIglooCamera(); // Ensure the Igloo camera is active by default
+            Debug.Log("Igloo camera activated after vehicle toggle.");
+        }
     }
+
+
+    // Utility method to disable a child camera
+    private void DisableChildCamera(GameObject parentObject)
+    {
+        if (parentObject != null)
+        {
+            Camera childCamera = parentObject.GetComponentInChildren<Camera>(true);
+            if (childCamera != null)
+            {
+                childCamera.enabled = false;
+                childCamera.gameObject.SetActive(false); // Prevent Unity from activating it
+                Debug.Log($"Disabled camera: {childCamera.name}");
+            }
+        }
+    }
+
+
+
+
+
 }

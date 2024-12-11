@@ -50,6 +50,6 @@ public class PlaneAudio : MonoBehaviour
         planeAudio.volume = volume;
 
         // Debugging
-        Debug.Log($"Distance: {distance}, Volume: {volume}");
+        //Debug.Log($"Distance: {distance}, Volume: {volume}");
     }
 }
