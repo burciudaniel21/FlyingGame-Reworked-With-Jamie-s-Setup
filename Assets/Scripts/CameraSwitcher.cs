@@ -38,7 +38,6 @@ public class CameraSwitcher : MonoBehaviour
         // Validate the camera list
         if (toggleCameras.Count == 0)
         {
-            Debug.LogError("No cameras found for toggling!");
             return;
         }
 
@@ -56,7 +55,6 @@ public class CameraSwitcher : MonoBehaviour
         ActivateIglooCamera();
     }
 
-
     // Updates the list of cameras dynamically
     public void UpdateCameraList()
     {
@@ -67,22 +65,12 @@ public class CameraSwitcher : MonoBehaviour
         if (iglooCamera != null)
         {
             toggleCameras.Add(iglooCamera);
-            Debug.Log($"Added Igloo camera: {iglooCamera.name}");
-        }
-        else
-        {
-            Debug.LogWarning("Igloo camera not found!");
         }
 
         // Add the manually placed FollowCamera
         if (manuallyPlacedCamera != null)
         {
             toggleCameras.Add(manuallyPlacedCamera);
-            Debug.Log($"Added manually placed camera: {manuallyPlacedCamera.name}");
-        }
-        else
-        {
-            Debug.LogWarning("Manually placed camera not assigned.");
         }
 
         // Add the plane camera
@@ -93,11 +81,6 @@ public class CameraSwitcher : MonoBehaviour
             if (planeCamera != null)
             {
                 toggleCameras.Add(planeCamera);
-                Debug.Log($"Added plane camera: {planeCamera.name}");
-            }
-            else
-            {
-                Debug.LogWarning("Plane camera not found!");
             }
         }
 
@@ -109,21 +92,9 @@ public class CameraSwitcher : MonoBehaviour
             if (balloonCamera != null)
             {
                 toggleCameras.Add(balloonCamera);
-                Debug.Log($"Added balloon camera: {balloonCamera.name}");
-            }
-            else
-            {
-                Debug.LogWarning("Balloon camera not found!");
             }
         }
-
-        Debug.Log($"Total cameras in toggleCameras: {toggleCameras.Count}");
     }
-
-
-
-
-
 
     // Activates the camera at the given index
     private void ActivateCamera(int index)
@@ -140,30 +111,15 @@ public class CameraSwitcher : MonoBehaviour
             if (shouldEnable)
             {
                 toggleCameras[i].tag = "MainCamera";
-                Debug.Log($"Tagged {toggleCameras[i].name} as MainCamera.");
             }
             else if (toggleCameras[i].tag == "MainCamera")
             {
                 toggleCameras[i].tag = "Untagged";
-                Debug.Log($"Untagged {toggleCameras[i].name}.");
-            }
-
-            if (shouldEnable)
-            {
-                Debug.Log($"Activated camera: {toggleCameras[i].name}");
-            }
-            else
-            {
-                Debug.Log($"Deactivated camera: {toggleCameras[i].name}");
             }
         }
 
         currentCameraIndex = index; // Update the current camera index
     }
-
-
-
-
 
     // Activates the Igloo camera (always index 0)
     public void ActivateIglooCamera()
@@ -172,14 +128,7 @@ public class CameraSwitcher : MonoBehaviour
         {
             ActivateCamera(0); // Force Igloo camera activation
         }
-        else
-        {
-            Debug.LogWarning("No cameras available to activate.");
-        }
     }
-
-
-
 
     // Handles the input action to switch the camera
     private void OnSwitchCameraPerformed(InputAction.CallbackContext context)
@@ -198,5 +147,4 @@ public class CameraSwitcher : MonoBehaviour
         // Activate the next camera
         ActivateCamera(currentCameraIndex);
     }
-
 }

@@ -41,10 +41,8 @@ public class ObjectToggleController : MonoBehaviour
         {
             cameraSwitcher.UpdateCameraList();
             cameraSwitcher.ActivateIglooCamera(); // Ensure the Igloo camera is active by default
-            Debug.Log("Igloo camera activated after vehicle toggle.");
         }
     }
-
 
     // Utility method to disable a child camera
     private void DisableChildCamera(GameObject parentObject)
@@ -56,13 +54,7 @@ public class ObjectToggleController : MonoBehaviour
             {
                 childCamera.enabled = false;
                 childCamera.gameObject.SetActive(false); // Prevent Unity from activating it
-                Debug.Log($"Disabled camera: {childCamera.name}");
             }
         }
     }
-
-
-
-
-
 }
