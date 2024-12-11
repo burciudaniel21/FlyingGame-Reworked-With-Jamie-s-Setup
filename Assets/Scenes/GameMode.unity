@@ -938,6 +938,8 @@ GameObject:
   - component: {fileID: 1955205789}
   - component: {fileID: 1955205790}
   - component: {fileID: 1955205791}
+  - component: {fileID: 1955205792}
+  - component: {fileID: 1955205793}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1092,6 +1094,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1955205792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955205787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 326a8863507734e4a9e86bf9aa8d29f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resetActionReference: {fileID: -34833470766430572, guid: 5a9e47b6b7df2574085b208429663347,
+    type: 3}
+--- !u!114 &1955205793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955205787}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd33e9115ecee40468216dc6beb874b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planeCamera: {fileID: 1515139505}
 --- !u!1 &1959249018
 GameObject:
   m_ObjectHideFlags: 0
