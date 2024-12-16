@@ -146,16 +146,16 @@ public class CameraSwitcher : MonoBehaviour
         if (toggleCameras.Count == 0) return;
 
 
-        iglooCameraSwitcher.SwitchToAlternateCamera();
+        // iglooCameraSwitcher.SwitchToAlternateCamera();
+        Debug.Log("Switching camera");
 
 
-        /*
 
         // Increment the camera index, looping back to 0 if it exceeds the list count
         currentCameraIndex = (currentCameraIndex + 1) % toggleCameras.Count;
 
         // Activate the next camera
         ActivateCamera(currentCameraIndex);
-        */
+        
     }
 }
