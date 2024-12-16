@@ -1,6 +1,6 @@
 # Walker - Igloo
 
-Link contains information for the 1.3 pluggin we use at ARU Peterborough     
+Link contains information for the 1.3 plugin we use at ARU Peterborough     
 https://camerapackages.igloovisiondesign.com/Igloo-Realtime-Camera-Packages.3588096014.html
 
 Branches  
