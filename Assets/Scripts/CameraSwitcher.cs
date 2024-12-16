@@ -13,6 +13,8 @@ public class CameraSwitcher : MonoBehaviour
     public Transform planeCameraTransform; // Reference to the plane's camera (optional)
     public Transform balloonCameraTransform; // Reference to the hot air balloon's camera (optional)
 
+    private IglooCameraSwitcher iglooCameraSwitcher;
+
     [Header("Input Actions")]
     public InputActionReference switchCameraAction; // Reference to the SwitchCamera action
 
@@ -30,8 +32,10 @@ public class CameraSwitcher : MonoBehaviour
         switchCameraAction.action.performed -= OnSwitchCameraPerformed;
     }
 
-    private void Start()
+    void Start()
     {
+        // Find the IglooManager in the scene
+        iglooCameraSwitcher = FindObjectOfType<IglooCameraSwitcher>();
         // Populate the camera list
         UpdateCameraList();
 
@@ -141,10 +145,17 @@ public class CameraSwitcher : MonoBehaviour
     {
         if (toggleCameras.Count == 0) return;
 
+
+        iglooCameraSwitcher.SwitchToAlternateCamera();
+
+
+        /*
+
         // Increment the camera index, looping back to 0 if it exceeds the list count
         currentCameraIndex = (currentCameraIndex + 1) % toggleCameras.Count;
 
         // Activate the next camera
         ActivateCamera(currentCameraIndex);
+        */
     }
 }
